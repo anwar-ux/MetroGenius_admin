@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "930896839134",
+    "project_id": "metrogeniusorg-5ddd4",
+    "storage_bucket": "metrogeniusorg-5ddd4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930896839134:android:eae76ce308970e2f92dd4f",
+        "android_client_info": {
+          "package_name": "com.example.metrogeniusorg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930896839134-466q04o5hgh845mqmqs9g1sueaj45kc9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCibnTHqpI6GGS4oe4MKLJ9c0iz2obDoaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930896839134-12m48mpdat05g95qp8bjlqsvlao5t7a7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "930896839134-o3ihcriok8v68dila86lj17c9gc1gt2t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.metrogeniusorg"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
