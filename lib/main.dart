@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         ),
           BlocProvider(
           create: (context) => GetWorkersBloc()..add(FetchWorkersData()),
-          child:const WorkersPage(),),
+          child: WorkersPage(),),
           BlocProvider(
           create: (context) => GetEmployeeApplicationsBloc(),
           lazy: false,
@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         color:Colors.black,
         theme:ThemeData(
+          appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
           scaffoldBackgroundColor: AppColors.primaryColor,
          textTheme:GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme)
         ),

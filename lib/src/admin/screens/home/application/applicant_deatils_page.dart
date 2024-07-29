@@ -11,7 +11,6 @@ import 'package:metrogenius_admin/src/widgets/alertdialog_custom.dart';
 import 'package:metrogenius_admin/src/widgets/snak_bar.dart';
 import 'package:metrogenius_admin/utils/colors.dart';
 
-
 class ApplicantDeatilsPage extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final data;
@@ -21,31 +20,17 @@ class ApplicantDeatilsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AcceptRejectBloc, AcceptRejectState>(
       listener: (context, state) {
-        if (state.acceptStatus == FormStatus.pending) {
-         const Center(
-            child: CircularProgressIndicator(
-              color: Colors.black,
-            ),
-          );
-        }
         if (state.acceptStatus == FormStatus.success) {
           showCustomSnackbar(
-              context, 'Success', 'Employee adding Successfull', Colors.green);
+              context, 'Success', 'Employee added successfully', Colors.green);
         }
-         if (state.acceptStatus == FormStatus.error) {
+        if (state.acceptStatus == FormStatus.error) {
           showCustomSnackbar(
-              context, 'Success', 'Employee adding Successfull', Colors.green);
-        }
-        if (state.rejectStatus == FormStatus.pending) {
-          const Center(
-            child: CircularProgressIndicator(
-              color: Colors.black,
-            ),
-          );
+              context, 'Error', 'Error adding employee', Colors.red);
         }
         if (state.rejectStatus == FormStatus.success) {
           showCustomSnackbar(
-              context, 'Deleted', 'Deletion Successfull', Colors.green);
+              context, 'Deleted', 'Deletion successful', Colors.green);
         }
       },
       builder: (context, state) {
@@ -68,6 +53,9 @@ class ApplicantDeatilsPage extends StatelessWidget {
                         secondButtonText: 'Delete',
                         firstButtonAction: () => Navigator.pop(context),
                         secondButtonAction: () {
+                          Navigator.pop(context);
+                          showCustomSnackbar(
+                              context, 'Please wait', 'Deleting employee...', Colors.blue);
                           context
                               .read<AcceptRejectBloc>()
                               .add(RejectClicked(data['Id']));
@@ -76,7 +64,7 @@ class ApplicantDeatilsPage extends StatelessWidget {
                         },
                         context: context,
                         title: 'Delete',
-                        message: 'Are you sure about delete this ?',
+                        message: 'Are you sure about deleting this?',
                       );
                     },
                     accept: () {
@@ -85,20 +73,22 @@ class ApplicantDeatilsPage extends StatelessWidget {
                         secondButtonText: 'Add',
                         firstButtonAction: () => Navigator.pop(context),
                         secondButtonAction: () {
+                          Navigator.pop(context);
+                          showCustomSnackbar(
+                              context, 'Employee aded', 'Adde', Colors.blue);
                           context
                               .read<AcceptRejectBloc>()
                               .add(AcceptClicked(data));
                           Navigator.of(context).pushReplacement(
-                              createRoute(const AdminHome()));
+                              createRoute(const AdminNavigation()));
                         },
                         context: context,
                         title: 'Add to Workers',
-                        message: 'Are you sure about add this worker?',
+                        message: 'Are you sure about adding this worker?',
                       );
                     },
                   ),
                   MainTopRightContainer(
-                   
                     email: data['Email'],
                     number: data['Phone'],
                     work: data['Work'],

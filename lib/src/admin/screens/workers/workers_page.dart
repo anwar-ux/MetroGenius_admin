@@ -6,18 +6,37 @@ import 'package:metrogenius_admin/src/widgets/snak_bar.dart';
 import 'package:metrogenius_admin/utils/colors.dart';
 import 'package:metrogenius_admin/utils/constants.dart';
 
-
 class WorkersPage extends StatelessWidget {
-  const WorkersPage({super.key});
+  WorkersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Workers'),
-      //   centerTitle: true,
-      //   automaticallyImplyLeading: false,
-      // ),
+      appBar: AppBar(
+        title: BlocBuilder<GetWorkersBloc, GetWorkersState>(
+          builder: (context, state) {
+            int totalWorkers = 0;
+            if (state is GetWorkersLoaded) {
+              totalWorkers = state.data.length;
+            }
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Workers',
+                  style: TextStyle(
+                      letterSpacing: 1, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'Total workers of the company : $totalWorkers',
+                  style: TextStyle(letterSpacing: 1, fontSize: 12),
+                ),
+              ],
+            );
+          },
+        ),
+        automaticallyImplyLeading: false,
+      ),
       body: BlocConsumer<GetWorkersBloc, GetWorkersState>(
         listener: (context, state) {
           if (state is GetWorkersFailed) {
@@ -35,7 +54,7 @@ class WorkersPage extends StatelessWidget {
                 itemCount: data.length,
                 itemBuilder: (context, index) {
                   final doc = data[index];
-                 return Container(
+                  return Container(
                     height: MediaQuery.of(context).size.height * 0.10,
                     width: MediaQuery.of(context).size.width * 0.90,
                     decoration: BoxDecoration(
@@ -61,16 +80,22 @@ class WorkersPage extends StatelessWidget {
                               fontSize: 18,
                               letterSpacing: 1),
                         ),
-                        leading:CircleAvatar(backgroundImage:NetworkImage( doc['Image'],),radius: 30,),
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            doc['Image'],
+                          ),
+                          radius: 30,
+                        ),
                         subtitle: Text(doc['Work']),
                       ),
                     ),
                   );
-                }, separatorBuilder:(context, index) => Constants.spaceHight10,
+                },
+                separatorBuilder: (context, index) => Constants.spaceHight10,
               ),
             );
           }
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

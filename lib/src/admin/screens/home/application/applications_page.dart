@@ -15,7 +15,7 @@ class ApplicationsPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: const Text('Applications'),
-          centerTitle: true,
+    
         ),
         body: BlocConsumer<GetEmployeeApplicationsBloc,
             GetEmployeeApplicationsState>(

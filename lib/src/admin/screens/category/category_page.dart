@@ -11,12 +11,11 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Category'),
-      //   centerTitle: true,
-      //   automaticallyImplyLeading: false,
+      appBar: AppBar(
+        title: const Text('Category'),
+        automaticallyImplyLeading: false,
        
-      // ),
+      ),
       body: CustomScrollView(
         slivers: [AllServicesGrid(icon: Icons.add,action: () {
                 Navigator.of(context).push(createRoute(AddCategory()));

@@ -11,29 +11,18 @@ class AdminHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   backgroundColor: Colors.transparent,
-      //   title:const Text('Welcome back admin'),
-      //   centerTitle: true,
-      //   actions: [
-      //     Container(
-      //       margin: const EdgeInsets.all(10.0),
-      //       height: 45,
-      //       width: 45,
-      //       decoration: BoxDecoration(
-      //         border: Border.all(
-      //           color: Colors.grey,
-      //         ),
-      //         borderRadius: BorderRadius.circular(25),
-      //       ),
-      //       child: const Icon(
-      //         Icons.notifications_active_outlined,
-      //         color: AppColors.lightGrey,
-      //       ),
-      //     )
-      //   ],
-      // ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        title:Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Welcome back admin',style: TextStyle(fontWeight: FontWeight.bold,letterSpacing: 1),),
+            const Text('Glad to see you again!',style: TextStyle(letterSpacing: 1,fontSize: 12),),
+          ],
+        ),
+        
+      ),
       body: Column(
         children: [
           Padding(
@@ -47,12 +36,12 @@ class AdminHome extends StatelessWidget {
                   action: () => Navigator.of(context).push(createRoute(const ApplicationsPage())),
                 ),
                 GridContainer(
-                  icon: Icons.settings_input_composite_sharp,
-                  title: '',
+                  icon: Icons.insights,
+                  title: 'Insights',
                 ),
                 GridContainer(
-                  icon: Icons.settings_input_composite_sharp,
-                  title: '',
+                  icon: Icons.payments_sharp,
+                  title: 'Payments',
                 )
               ],
             ),
