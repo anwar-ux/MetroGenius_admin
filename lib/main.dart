@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:metrogenius_admin/firebase_options.dart';
 import 'package:metrogenius_admin/src/admin/screens/category/bloc/addcategory/category_bloc.dart';
-import 'package:metrogenius_admin/src/admin/screens/category/bloc/bloc/getcategory_bloc.dart';
+import 'package:metrogenius_admin/src/admin/screens/category/bloc/addsubcategory/add_sub_category_bloc.dart';
+import 'package:metrogenius_admin/src/admin/screens/category/bloc/getcategory/getcategory_bloc.dart';
+import 'package:metrogenius_admin/src/admin/screens/category/bloc/getsubcategory/get_sub_category_bloc.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/admin_bottom_navigation.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/application/bloc/button_click/accept_reject_bloc.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/application/bloc/getemployeeapplication/get_employee_applications_bloc.dart';
@@ -13,8 +15,8 @@ import 'package:metrogenius_admin/src/admin/screens/workers/workers_page.dart';
 import 'package:metrogenius_admin/src/widgets/all_services_grid.dart';
 import 'package:metrogenius_admin/utils/colors.dart';
 
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -29,10 +31,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-         BlocProvider(
+        BlocProvider(
           create: (context) => CategoryBloc(),
         ),
-         BlocProvider(
+        BlocProvider(
           create: (context) => AcceptRejectBloc(),
           lazy: false,
         ),
@@ -40,25 +42,30 @@ class MyApp extends StatelessWidget {
           create: (context) => GetcategoryBloc()..add(FetchCategoryData()),
           child: AllServicesGrid(),
         ),
-          BlocProvider(
+        BlocProvider(
           create: (context) => GetWorkersBloc()..add(FetchWorkersData()),
-          child: WorkersPage(),),
-          BlocProvider(
+          child: WorkersPage(),
+        ),
+        BlocProvider(
           create: (context) => GetEmployeeApplicationsBloc(),
           lazy: false,
         ),
+        BlocProvider(
+          create: (context) => AddSubCategoryBloc(),
+        ),
+        BlocProvider(
+          create: (context) => GetSubCategoryBloc(),
+        )
       ],
       child: MaterialApp(
-        color:Colors.black,
-        theme:ThemeData(
-          appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
-          scaffoldBackgroundColor: AppColors.primaryColor,
-         textTheme:GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme)
-        ),
+        color: Colors.black,
+        theme: ThemeData(
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
+            scaffoldBackgroundColor: AppColors.primaryColor,
+            textTheme: GoogleFonts.urbanistTextTheme(Theme.of(context).textTheme)),
         debugShowCheckedModeBanner: false,
-       home:const AdminNavigation(),
+        home: const AdminNavigation(),
       ),
     );
   }
 }
-

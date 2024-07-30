@@ -14,7 +14,8 @@ class CustomTextfield extends StatelessWidget {
     this.head,
     this.onTapSuffix,
     this.obscureText,
-    this.readOnly
+    this.readOnly,
+   required this.keyboardType
   });
 
   final String hint;
@@ -27,6 +28,7 @@ class CustomTextfield extends StatelessWidget {
   final VoidCallback? onTapSuffix;
   final bool? obscureText;
   final bool? readOnly;
+  final TextInputType keyboardType;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,6 +47,7 @@ class CustomTextfield extends StatelessWidget {
           Constants.spaceHight10,
         ],
         TextFormField(
+          keyboardType:keyboardType ,
           focusNode: focusNode,
           readOnly:readOnly??false ,
           onChanged: onChanged,

@@ -7,10 +7,6 @@ import 'package:metrogenius_admin/src/admin/screens/category/bloc/addcategory/ca
 import 'package:metrogenius_admin/src/widgets/custom_button.dart';
 import 'package:metrogenius_admin/src/widgets/custom_textfield.dart';
 import 'package:metrogenius_admin/utils/constants.dart';
-import 'dart:typed_data';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
-
 
 
 // ignore: must_be_immutable
@@ -58,6 +54,7 @@ class AddCategory extends StatelessWidget {
                 Constants.spaceHight20,
                 CustomTextfield(
                   hint: 'Categoryname',
+                  keyboardType: TextInputType.name,
                   controller: nameController,
                   onChanged: (value) =>
                       context.read<CategoryBloc>().add(NameChanged(value)),
