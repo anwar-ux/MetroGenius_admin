@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:metrogenius_admin/src/admin/screens/category/category_page.dart';
-import 'package:metrogenius_admin/src/admin/screens/category/sub_category.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/application/applications_page.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/home.dart';
 import 'package:metrogenius_admin/src/admin/screens/settings/settings.dart';

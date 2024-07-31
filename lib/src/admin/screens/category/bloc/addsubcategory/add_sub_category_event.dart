@@ -26,3 +26,12 @@ final class FormSubmit extends AddSubCategoryEvent {
   FormSubmit(this.categoryId);
   String categoryId;
 }
+class CheckboxChanged extends AddSubCategoryEvent {
+  final String checkboxName;
+  final bool isChecked;
+
+   CheckboxChanged(this.checkboxName, this.isChecked);
+
+  @override
+  List<Object> get props => [checkboxName, isChecked];
+}

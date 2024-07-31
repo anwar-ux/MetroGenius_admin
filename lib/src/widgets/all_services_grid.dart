@@ -49,7 +49,7 @@ class AllServicesGrid extends StatelessWidget {
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Icon(icon, color: Colors.blue), Text('ADD CATEGORY')],
+                          children: [Icon(icon, color: Colors.blue),const Text('ADD CATEGORY')],
                         ),
                       ),
                     );
@@ -57,7 +57,7 @@ class AllServicesGrid extends StatelessWidget {
                     if (index < state.data.length) {
                       final doc = state.data[index];
                       return GestureDetector(
-                        onTap: () => Navigator.of(context).push(createRoute(SubCategory(categoryId:doc['Id'],))),
+                        onTap: () => Navigator.of(context).push(createRoute(SubCategory(categoryId:doc['Id'], categoryName: doc['Name'],))),
                         child: Container(
                           decoration: BoxDecoration(
                             color: AppColors.seconderyColor,

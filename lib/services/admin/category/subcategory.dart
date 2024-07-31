@@ -17,6 +17,8 @@ class Subcategory {
     required String image,
     required String discription,
     required int price,
+    required Map<String, bool> checkboxes,
+
   }) {
     Map<String, dynamic> employeeAplicationInfo = {
       'Id': id,
@@ -24,14 +26,12 @@ class Subcategory {
       'Image': image,
       'Discription': discription,
       'Price': price,
+      'Checkboxes':checkboxes,
     };
     return employeeAplicationInfo;
   }
- static Future<Stream<QuerySnapshot>> getSubcategories(String categoryId) async {
-    return FirebaseFirestore.instance
-        .collection("Categorys")  
-        .doc(categoryId)          
-        .collection("subcategories") 
-        .snapshots();            
+
+  static Future<Stream<QuerySnapshot>> getSubcategories(String categoryId) async {
+    return FirebaseFirestore.instance.collection("Categorys").doc(categoryId).collection("subcategories").snapshots();
   }
 }

@@ -1,40 +1,42 @@
 part of 'add_sub_category_bloc.dart';
 
-enum FormStatus {
-  initial,
-  pending,
-  success,
-  error,
-}
+enum FormStatus { initial, success, error }
 
-@immutable
-class AddSubCategoryState {
+class AddSubCategoryState extends Equatable {
+  final String? name;
+  final int? price;
+  final String? image;
+  final String? discription;
+  final Map<String, bool> checkboxes;
+  final FormStatus status;
+
   const AddSubCategoryState({
-    this.image = '',
-    this.name = '',
-    this.price = 0,
-    this.discription = '',
+    this.name,
+    this.price,
+    this.image,
+    this.discription,
+    this.checkboxes = const {},
     this.status = FormStatus.initial,
   });
 
-  final String? name;
-  final String? image;
-  final int? price;
-  final String? discription;
-  final FormStatus status;
-
   AddSubCategoryState copyWith({
-    String? image,
     String? name,
-    FormStatus? status,
     int? price,
+    String? image,
     String? discription,
-  }) =>
-      AddSubCategoryState(
-        image: image ?? this.image,
-        name: name ?? this.name,
-        status: status ?? this.status,
-        price: price??this.price,
-        discription: discription??this.discription
-      );
+    Map<String, bool>? checkboxes,
+    FormStatus? status,
+  }) {
+    return AddSubCategoryState(
+      name: name ?? this.name,
+      price: price ?? this.price,
+      image: image ?? this.image,
+      discription: discription ?? this.discription,
+      checkboxes: checkboxes ?? this.checkboxes,
+      status: status ?? this.status,
+    );
+  }
+
+  @override
+  List<Object?> get props => [name, price, image, discription, checkboxes, status];
 }

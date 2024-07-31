@@ -14,6 +14,7 @@ class AddSubCategoryBloc extends Bloc<AddSubCategoryEvent, AddSubCategoryState> 
     on<ImageChanged>(_imageChanged);
     on<DiscriptionChanged>(_discriptionChanged);
     on<FormSubmit>(_formSubmit);
+    on<CheckboxChanged>(_checkboxChanged);
   }
 
   void _nameChanged(NameChanged event, Emitter<AddSubCategoryState> emit) {
@@ -32,25 +33,32 @@ class AddSubCategoryBloc extends Bloc<AddSubCategoryEvent, AddSubCategoryState> 
     emit(state.copyWith(discription: event.discription));
   }
 
+  void _checkboxChanged(CheckboxChanged event, Emitter<AddSubCategoryState> emit) {
+    final updatedCheckboxes = Map<String, bool>.from(state.checkboxes)
+      ..[event.checkboxName] = event.isChecked;
+    emit(state.copyWith(checkboxes: updatedCheckboxes));
+  }
+
   void _formSubmit(FormSubmit event, Emitter<AddSubCategoryState> emit) async {
     emit(state.copyWith(status: FormStatus.initial));
     try {
-      final genaratedId = randomAlphaNumeric(6);
-      final subCategoryDeatils = Subcategory.subCategoryInfo(
-        id: genaratedId,
+      final generatedId = randomAlphaNumeric(6);
+      final subCategoryDetails = Subcategory.subCategoryInfo(
+        id: generatedId,
         name: state.name!,
         image: state.image!,
         discription: state.discription!,
         price: state.price!,
+        checkboxes: state.checkboxes,
       );
-      final result = await Subcategory.addSubcategory(event.categoryId, subCategoryDeatils, genaratedId);
+      final result = await Subcategory.addSubcategory(event.categoryId, subCategoryDetails, generatedId);
       if (result) {
         emit(state.copyWith(status: FormStatus.success));
-      }else{
-         emit(state.copyWith(status: FormStatus.error));
+      } else {
+        emit(state.copyWith(status: FormStatus.error));
       }
     } catch (e) {
-        emit(state.copyWith(status: FormStatus.error));
+      emit(state.copyWith(status: FormStatus.error));
     }
   }
 }
