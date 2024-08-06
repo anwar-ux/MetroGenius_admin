@@ -4,7 +4,6 @@ import 'package:metrogenius_admin/animation/route_animation.dart';
 import 'package:metrogenius_admin/src/admin/screens/category/add_category.dart';
 import 'package:metrogenius_admin/src/widgets/all_services_grid.dart';
 
-
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
 
@@ -14,12 +13,16 @@ class CategoryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Category'),
         automaticallyImplyLeading: false,
-       
       ),
       body: CustomScrollView(
-        slivers: [AllServicesGrid(icon: Icons.add,action: () {
-                Navigator.of(context).push(createRoute(AddCategory()));
-              } ,)],
+        slivers: [
+          AllServicesGrid(
+            icon: Icons.add,
+            action: () {
+              Navigator.of(context).push(createRoute(AddCategory()));
+            },
+          )
+        ],
       ),
     );
   }

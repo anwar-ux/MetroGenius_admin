@@ -15,10 +15,8 @@ class ApplicationsPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: const Text('Applications'),
-    
         ),
-        body: BlocConsumer<GetEmployeeApplicationsBloc,
-            GetEmployeeApplicationsState>(
+        body: BlocConsumer<GetEmployeeApplicationsBloc, GetEmployeeApplicationsState>(
           listener: (context, state) {
             if (state is GetEmployeeApplicationsFailed) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -48,9 +46,7 @@ class ApplicationsPage extends StatelessWidget {
                     leading: CircleAvatar(
                       radius: 35,
                       backgroundImage: NetworkImage(doc['Image']),
-                      onBackgroundImageError: (exception, stackTrace) {
-                        print('Error loading image: $exception');
-                      },
+                      onBackgroundImageError: (exception, stackTrace) {},
                     ),
                     title: Text(doc['Name']),
                     subtitle: Text(doc['Work']),

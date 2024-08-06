@@ -2,14 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:metrogenius_admin/animation/route_animation.dart';
-import 'package:metrogenius_admin/src/admin/screens/home/admin_bottom_navigation.dart';
+import 'package:metrogenius_admin/src/admin/screens/home/application/applications_page.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/application/bloc/button_click/accept_reject_bloc.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/application/deatilspage_widgets/top_left_container.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/application/deatilspage_widgets/top_right_container.dart';
 import 'package:metrogenius_admin/src/admin/screens/home/home.dart';
 import 'package:metrogenius_admin/src/widgets/alertdialog_custom.dart';
 import 'package:metrogenius_admin/src/widgets/snak_bar.dart';
-import 'package:metrogenius_admin/utils/colors.dart';
 
 class ApplicantDeatilsPage extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -60,7 +59,7 @@ class ApplicantDeatilsPage extends StatelessWidget {
                               .read<AcceptRejectBloc>()
                               .add(RejectClicked(data['Id']));
                           Navigator.of(context).pushReplacement(
-                              createRoute(const AdminNavigation()));
+                              createRoute(const ApplicationsPage()));
                         },
                         context: context,
                         title: 'Delete',
@@ -80,7 +79,7 @@ class ApplicantDeatilsPage extends StatelessWidget {
                               .read<AcceptRejectBloc>()
                               .add(AcceptClicked(data));
                           Navigator.of(context).pushReplacement(
-                              createRoute(const AdminNavigation()));
+                              createRoute(const AdminHome()));
                         },
                         context: context,
                         title: 'Add to Workers',
@@ -96,20 +95,20 @@ class ApplicantDeatilsPage extends StatelessWidget {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    color: AppColors.thirdColor,
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    width: MediaQuery.of(context).size.width * 0.1,
-                    color: AppColors.seconderyColor,
-                  ),
-                ],
-              )
+              // Row(
+              //   children: [
+              //     Container(
+              //       height: MediaQuery.of(context).size.height * 0.5,
+              //       width: MediaQuery.of(context).size.width * 0.9,
+              //       color: AppColors.thirdColor,
+              //     ),
+              //     Container(
+              //       height: MediaQuery.of(context).size.height * 0.5,
+              //       width: MediaQuery.of(context).size.width * 0.1,
+              //       color: AppColors.seconderyColor,
+              //     ),
+              //   ],
+              // )
             ],
           ),
         );
