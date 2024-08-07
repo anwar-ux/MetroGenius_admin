@@ -19,7 +19,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.4.3 <4.0.0"
+  sdk: '>=2.5.0 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,12 +30,14 @@ environment:
 dependencies:
   cloud_firestore: ^5.1.0
   cupertino_icons: ^1.0.6
+  env: ^0.0.1
   equatable: ^2.0.5
   firebase_core: ^3.2.0
   firebase_storage: ^12.1.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
+  flutter_dotenv: ^5.1.0
   flutter_staggered_grid_view: ^0.7.0
   google_fonts: ^6.2.1
   google_nav_bar: ^5.0.6
@@ -60,8 +62,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

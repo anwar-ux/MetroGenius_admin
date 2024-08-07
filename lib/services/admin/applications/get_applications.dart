@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mailer/mailer.dart';
+import 'package:mailer/smtp_server.dart';
 import 'package:mailer/smtp_server/gmail.dart';
 import 'package:http/http.dart' as http;
 
@@ -78,13 +79,12 @@ static Future<void> sendWelcomeEmail(String email, String employeeCode) async {
 
   static Future<bool> sendEmail(String recipientEmail, String employeeCode) async {
     print('gii');
-    String username = 'shihabca818@gmail.com';
-    String password = 'uddkqbgoeyzmozbq';
+  
 
-    final smtpServer = gmail(username, password);
+    final smtpServer = yandex('anwarcr7432@gmail.com','ynwgwyjwvntdiwrb');
 
     final message = Message()
-      ..from = Address(username, 'Your Company')
+      ..from = Address('anwarcr7432@gmail.com', 'Your Company')
       ..recipients.add(recipientEmail)
       ..subject = 'Welcome to the Company'
       ..text = 'Your employee code is $employeeCode'
